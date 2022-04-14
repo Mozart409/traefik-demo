@@ -39,6 +39,7 @@ services:
       - 'traefik.http.routers.whoami.entrypoints=web'
 
   frontend:
+    restart: unless-stopped
     build:
       context: frontend/
       dockerfile: Dockerfile.dev

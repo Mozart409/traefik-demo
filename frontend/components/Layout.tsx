@@ -2,6 +2,8 @@ import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 
+import '../styles/globals.css'
+
 type Props = {
   children?: ReactNode
   title?: string
