@@ -11,7 +11,7 @@ services:
     image: traefik:v2.6
     ports:
       # The HTTP port
-      - '80:80'
+      - '4000:80'
       # The Web UI (enabled by --api.insecure=true)
       - '8080:8080'
     volumes:
@@ -19,11 +19,12 @@ services:
       - '$PWD/traefik.yaml:/etc/traefik/traefik.yaml'
 
   redis:
-    image: bitnami/redis:6.2
+    image: redis:6.2
     ports:
       - '6379:6379'
     environment:
       - REDIS_PASSWORD=password
+      - LOG_LEVEL=warning
 
     labels:
       - 'traefik.http.routers.whoami.rule=Host(`redis.docker.localhost`)'
