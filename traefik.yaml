@@ -1,0 +1,6 @@
+log:
+  level: warn
+
+api:
+  insecure: true
+  dashboard: true

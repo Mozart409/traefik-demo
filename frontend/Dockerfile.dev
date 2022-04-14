@@ -1,0 +1,18 @@
+# Install dependencies only when needed
+FROM node:16-alpine AS deps
+
+RUN corepack enable
+RUN corepack prepare pnpm@7.0.0-rc.3 --activate
+
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install
+
+ENV NODE_ENV development
+
+EXPOSE 3000
+
+ENV PORT 3000
+
+CMD ["pnpm", "dev"]
